@@ -106,7 +106,7 @@
                                     </select>
                                 </div> --}}
                             <input class="form-control input-search-product" name="q" type="text"
-                                placeholder="{{ __('Je cherche...') }}" autocomplete="off">
+                                placeholder="{{ __('Je cherche...') }}" autocomplete="off" style="border: 1px solid var(--secondary);">
                             <div class="spinner-icon">
                                 <i class="fa fa-spin fa-spinner"></i>
                             </div>
