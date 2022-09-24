@@ -1,6 +1,6 @@
 @if (count($sliders) > 0)
     <div class="ps-home-banner ps-home-banner--1">
-        <div class="ps-container">
+        <div class="ps-container" style="padding: 0px">
             @php $ads = get_ads_keys_from_shortcode($shortcode); @endphp
             @if (is_plugin_active('ads') && (AdsManager::locationHasAds('top-slider-image-1') || AdsManager::locationHasAds('top-slider-image-2') || count($ads)))
                 <div class="ps-section__left">
