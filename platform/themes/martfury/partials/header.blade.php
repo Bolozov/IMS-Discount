@@ -174,7 +174,7 @@
                                         href="{{ !auth('customer')->check() ? route('customer.login') : (auth('customer')->user()->is_vendor ? route('marketplace.vendor.dashboard') : route('marketplace.vendor.become-vendor')) }}">{{ __('Sell On Martfury') }}</a>
                                 </li>
                             @endif
-                            <li><a href="{{ route('public.orders.tracking') }}">{{ __('Track your order') }}</a></li>
+                            {{-- <li><a href="{{ route('public.orders.tracking') }}">{{ __('Track your order') }}</a></li> --}}
                             @php $currencies = get_all_currencies(); @endphp
                             @if (count($currencies) > 1)
                                 <li>
