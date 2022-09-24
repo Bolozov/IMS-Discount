@@ -30,21 +30,9 @@
                     {!! dynamic_sidebar('bottom_footer_sidebar') !!}
                 </div>
             @endif
-            <div class="ps-footer__copyright">
+            <div class="ps-footer__copyright text-center">
                 <p>{{ theme_option('copyright') }}</p>
-                @php $paymentMethods = array_filter(json_decode(theme_option('payment_methods', []), true)); @endphp
-                @if ($paymentMethods)
-                    <div class="footer-payments">
-                        <span>{{ __('We Using Safe Payment For') }}:</span>
-                        <p class="d-sm-inline-block d-block">
-                            @foreach($paymentMethods as $method)
-                                @if (!empty($method))
-                                    <span><img src="{{ RvMedia::getImageUrl($method) }}" alt="payment method"></span>
-                                @endif
-                            @endforeach
-                        </p>
-                    </div>
-                @endif
+              
             </div>
         </div>
     </footer>
