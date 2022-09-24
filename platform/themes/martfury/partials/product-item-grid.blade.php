@@ -47,7 +47,7 @@
             @endif
             <ul class="ps-product__actions">
                 <li><a class="js-add-to-wishlist-button" href="#" data-url="{{ route('public.wishlist.add', $product->id) }}"><i class="icon-heart"></i> {{ __('Wishlist') }}</a></li>
-                <li><a class="js-add-to-compare-button" href="#" data-url="{{ route('public.compare.add', $product->id) }}"><i class="icon-chart-bars"></i>
+                {{-- <li><a class="js-add-to-compare-button" href="#" data-url="{{ route('public.compare.add', $product->id) }}"><i class="icon-chart-bars"></i> --}}
                     {{ __('Compare') }}</a></li>
             </ul>
         </div>
