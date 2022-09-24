@@ -274,7 +274,7 @@
         <div class="ps-panel__content">
             {!! Menu::renderMenuLocation('main-menu', [
                 'view' => 'menu',
-                'options' => ['class' => 'menu--mobile'],
+                'options' => ['class' => 'menu--mobile text-left'],
             ]) !!}
 
             <ul class="menu--mobile menu--mobile-extra">
