@@ -167,9 +167,9 @@
                 <div class="">
                     <div class="text-center">
                         {!! Menu::renderMenuLocation('main-menu', [
-                        'view' => 'menu',
-                        'options' => ['class' => 'menu'],
-                    ]) !!}
+                            'view' => 'menu',
+                            'options' => ['class' => 'menu'],
+                        ]) !!}
                     </div>
                     @if (is_plugin_active('ecommerce'))
                         <ul class="navigation__extra">
