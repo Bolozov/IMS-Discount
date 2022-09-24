@@ -79,8 +79,8 @@
     <header class="header header--1" data-sticky="{{ Theme::get('stickyHeader', 'true') }}">
         <div class="header__top" style="background-color:white">
             <div class="ps-container">
-                {{-- <div class="header__left">
-                    <div class="menu--product-categories">
+                <div class="header__left">
+                    {{-- <div class="menu--product-categories">
                         <div class="menu__toggle"><i class="icon-menu"></i><span> {{ __('Shop by Department') }}</span>
                         </div>
                         <div class="menu__content" style="display: none">
@@ -88,10 +88,11 @@
                                 {!! Theme::partial('product-categories-dropdown', compact('categories')) !!}
                             </ul>
                         </div>
-                    </div><a class="ps-logo" href="{{ route('public.index') }}"><img
+                    </div> --}}
+                    <a class="ps-logo" href="{{ route('public.index') }}"><img
                             src="{{ RvMedia::getImageUrl(theme_option('logo')) }}"
                             alt="{{ theme_option('site_title') }}" height="60"></a>
-                </div> --}}
+                </div>
                 @if (is_plugin_active('ecommerce'))
                     <div class="header__center" style="margin-top: 10px;">
                         <form class="ps-form--quick-search" action="{{ route('public.products') }}"
