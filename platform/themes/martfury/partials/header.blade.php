@@ -89,9 +89,9 @@
                             </ul>
                         </div>
                     </div> --}}
-                    <a class="ps-logo" href="{{ route('public.index') }}"><img
+                    <a class="ps-logo" href="{{ route('public.index') }}" style="display: block"><img
                             src="{{ RvMedia::getImageUrl(theme_option('logo')) }}"
-                            alt="{{ theme_option('site_title') }}" height="60"></a>
+                            alt="{{ theme_option('site_title') }}" height="65"></a>
                 </div>
                 @if (is_plugin_active('ecommerce'))
                     <div class="header__center" style="margin-top: 10px;">
@@ -164,7 +164,7 @@
                     </div>
                 </div> --}}
 
-                <div class="navigation__right">
+                <div class="">
                     {!! Menu::renderMenuLocation('main-menu', [
                         'view' => 'menu',
                         'options' => ['class' => 'menu'],
