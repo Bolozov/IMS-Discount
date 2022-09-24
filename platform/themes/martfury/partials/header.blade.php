@@ -106,7 +106,8 @@
                                     </select>
                                 </div> --}}
                             <input class="form-control input-search-product" name="q" type="text"
-                                placeholder="{{ __('Je cherche...') }}" autocomplete="off" style="border: 1px solid var(--secondary);">
+                                placeholder="{{ __('Je cherche...') }}" autocomplete="off"
+                                style="border: 1px solid var(--secondary);">
                             <div class="spinner-icon">
                                 <i class="fa fa-spin fa-spinner"></i>
                             </div>
@@ -150,7 +151,7 @@
         </div>
         <nav class="navigation" style="background-color: white">
             <div class="ps-container">
-                <div class="navigation__left">
+                {{-- <div class="navigation__left">
                     <div class="menu--product-categories">
                         <div class="menu__toggle"><i class="icon-menu"></i><span> {{ __('Shop by Department') }}</span>
                         </div>
@@ -160,8 +161,8 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div class="navigation__right">
+                </div> --}}
+
                 <div class="navigation__right">
                     {!! Menu::renderMenuLocation('main-menu', [
                         'view' => 'menu',
@@ -236,8 +237,8 @@
                     {{ __('Menu') }}</span></a>
             <a class="navigation__item ps-toggle--sidebar" href="#navigation-mobile"><i class="icon-list4"></i><span>
                     {{ __('Categories') }}</span></a>
-            <a class="navigation__item ps-toggle--sidebar" href="#search-sidebar"><i
-                    class="icon-magnifier"></i><span> {{ __('Search') }}</span></a>
+            <a class="navigation__item ps-toggle--sidebar" href="#search-sidebar"><i class="icon-magnifier"></i><span>
+                    {{ __('Search') }}</span></a>
             <a class="navigation__item ps-toggle--sidebar" href="#cart-mobile"><i class="icon-bag2"></i><span>
                     {{ __('Cart') }}</span></a>
         </div>

@@ -1,4 +1,4 @@
-<header class="header header--mobile" data-sticky="true">
+<header class="header header--mobile" data-sticky="true" style="background-color: white">
     <div class="header__top">
         <div class="header__left">
             <p>{{ theme_option('welcome_message') }}</p>
@@ -26,7 +26,7 @@
             </div>
         @endif
     </div>
-    <div class="navigation--mobile">
+    <div class="navigation--mobile"  style="background-color: white">
         <div class="navigation__left"><a class="ps-logo" href="{{ route('public.index') }}"><img src="{{ RvMedia::getImageUrl(theme_option('logo')) }}" alt="{{ theme_option('site_title') }}"></a></div>
         @if (is_plugin_active('ecommerce'))
             <div class="navigation__right">
@@ -52,7 +52,7 @@
         <div class="ps-search--mobile">
             <form class="ps-form--search-mobile" action="{{ route('public.products') }}" data-ajax-url="{{ route('public.ajax.search-products') }}" method="get">
                 <div class="form-group--nest position-relative">
-                    <input class="form-control input-search-product" name="q" value="{{ request()->query('q') }}" type="text" autocomplete="off" placeholder="{{ __('Search something...') }}">
+                    <input class="form-control input-search-product" name="q" value="{{ request()->query('q') }}" type="text" autocomplete="off" placeholder="{{ __('Je cherche...') }}">
                     <div class="spinner-icon">
                         <i class="fa fa-spin fa-spinner"></i>
                     </div>
