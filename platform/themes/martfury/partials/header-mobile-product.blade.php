@@ -1,5 +1,5 @@
 <header class="header header--mobile header--mobile-product" data-sticky="true" style="background: white">
-    <div class="navigation--mobile">
+    <div class="navigation--mobile" style="background: white">
         <div class="navigation__left">
             <a class="header__back" href="{{ route('public.products') }}"><i class="icon-chevron-left"></i><strong>{{ __('Back to Products') }}</strong></a>
         </div>
