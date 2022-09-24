@@ -165,10 +165,12 @@
                 </div> --}}
 
                 <div class="">
-                    {!! Menu::renderMenuLocation('main-menu', [
+                    <div class="text-center">
+                        {!! Menu::renderMenuLocation('main-menu', [
                         'view' => 'menu',
                         'options' => ['class' => 'menu'],
                     ]) !!}
+                    </div>
                     @if (is_plugin_active('ecommerce'))
                         <ul class="navigation__extra">
                             @if (is_plugin_active('marketplace'))
