@@ -30,7 +30,7 @@
                     {!! dynamic_sidebar('bottom_footer_sidebar') !!}
                 </div>
             @endif
-            <div class="ps-footer__copyright text-center">
+            <div class="ps-footer__copyright text-center" style="display: block !important">
                 <p>{{ theme_option('copyright') }}</p>
               
             </div>
