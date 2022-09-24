@@ -281,8 +281,8 @@
                 @if (is_plugin_active('ecommerce'))
                     <li><a href="{{ route('public.orders.tracking') }}"><i class="icon-check-square"></i>
                             {{ __('Track your order') }}</a></li>
-                    {{-- <li><a href="{{ route('public.compare') }}"><i class="icon-chart-bars"></i> --}}
-                            <span>{{ __('Compare') }}</span></a></li>
+                    {{-- <li><a href="{{ route('public.compare') }}"><i class="icon-chart-bars"></i>
+                            <span>{{ __('Compare') }}</span></a></li> --}}
                     <li><a href="{{ route('public.wishlist') }}"><i class="icon-heart"></i>
                             <span>{{ __('Wishlist') }}</span></a></li>
                     @if (count($currencies) > 1)
