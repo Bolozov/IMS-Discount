@@ -59,7 +59,7 @@
 
         {!! Theme::get('topHeader') !!}
 
-        <header class="header header--1" data-sticky="{{ Theme::get('stickyHeader', 'false') }}">
+        <header class="header header--1" data-sticky="{{ Theme::get('stickyHeader', 'true') }}">
             <div class="header__top" style="background-color:white">
                 <div class="ps-container">
                     <div class="header__left">
@@ -84,7 +84,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <input class="form-control input-search-product" name="q" type="text" placeholder="{{ __("I'm shopping for...") }}" autocomplete="off">
+                                <input class="form-control input-search-product" name="q" type="text" placeholder="{{ __("Je cherche...") }}" autocomplete="off">
                                 <div class="spinner-icon">
                                     <i class="fa fa-spin fa-spinner"></i>
                                 </div>
@@ -122,7 +122,7 @@
                     @endif
                 </div>
             </div>
-            <nav class="navigation">
+            <nav class="navigation" style="background-color: white">
                 <div class="ps-container">
                     <div class="navigation__left">
                         <div class="menu--product-categories">
