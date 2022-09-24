@@ -162,6 +162,7 @@
                     </div>
                 </div>
                 <div class="navigation__right">
+                <div class="navigation__right">
                     {!! Menu::renderMenuLocation('main-menu', [
                         'view' => 'menu',
                         'options' => ['class' => 'menu'],
