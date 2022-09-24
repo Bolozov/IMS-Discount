@@ -59,8 +59,8 @@
 
         {!! Theme::get('topHeader') !!}
 
-        <header class="header header--1" data-sticky="{{ Theme::get('stickyHeader', 'true') }}">
-            <div class="header__top">
+        <header class="header header--1" data-sticky="{{ Theme::get('stickyHeader', 'false') }}">
+            <div class="header__top" style="background-color:white">
                 <div class="ps-container">
                     <div class="header__left">
                         <div class="menu--product-categories">
