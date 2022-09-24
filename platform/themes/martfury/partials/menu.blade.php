@@ -11,7 +11,7 @@
                     'menu_nodes' => $row->child,
                     'view'       => 'menu',
                     'options' => [
-                        'class' => 'sub-menu',
+                        'class' => 'sub-menu text-left',
                     ]
                 ]) !!}
             @endif
