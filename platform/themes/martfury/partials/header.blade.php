@@ -95,7 +95,7 @@
                         <div class="header__right">
                             <div class="header__actions">
                                 {!! apply_filters('before_theme_header_actions', null) !!}
-                                <a class="header__extra btn-compare" href="{{ route('public.compare') }}"><i class="icon-chart-bars"></i><span><i>{{ Cart::instance('compare')->count() }}</i></span></a>
+                                {{-- <a class="header__extra btn-compare" href="{{ route('public.compare') }}"><i class="icon-chart-bars"></i><span><i>{{ Cart::instance('compare')->count() }}</i></span></a> --}}
                                 <a class="header__extra btn-wishlist" href="{{ route('public.wishlist') }}"><i class="icon-heart"></i><span><i>{{ !auth('customer')->check() ? Cart::instance('wishlist')->count() : auth('customer')->user()->wishlist()->count() }}</i></span></a>
                                 @if (EcommerceHelper::isCartEnabled())
                                     <div class="ps-cart--mini">
