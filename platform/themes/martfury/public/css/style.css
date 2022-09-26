@@ -19036,3 +19036,7 @@ button.ps-btn {
 .rating_wrap {
   display: none;
 }
+
+.header .header__right {
+    max-width: 420px !important;
+}

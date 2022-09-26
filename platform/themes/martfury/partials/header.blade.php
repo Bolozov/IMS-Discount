@@ -94,7 +94,7 @@
                             alt="{{ theme_option('site_title') }}" height="65"></a>
                 </div>
                 @if (is_plugin_active('ecommerce'))
-                    <div class="header__center" style="margin-top: 10px;">
+                    <div class="header__center" style="margin-top: 15px;">
                         <form class="ps-form--quick-search" action="{{ route('public.products') }}"
                             data-ajax-url="{{ route('public.ajax.search-products') }}" method="get">
                             {{-- <div class="form-group--icon">
@@ -116,7 +116,7 @@
                             <div class="ps-panel--search-result"></div>
                         </form>
                     </div>
-                    <div class="header__right" style="margin-top: 10px;">
+                    <div class="header__right" style="margin-top: 15px;">
                         <div class="header__actions">
                             {!! apply_filters('before_theme_header_actions', null) !!}
                             <div class="ps-block--user-header">
