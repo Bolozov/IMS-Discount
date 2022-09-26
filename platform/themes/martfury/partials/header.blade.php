@@ -119,9 +119,16 @@
                     <div class="header__right" style="margin-top: 10px;">
                         <div class="header__actions">
                             {!! apply_filters('before_theme_header_actions', null) !!}
+                            <div class="ps-block--user-header">
+                                <div class="ps-block__left"><i class="icon-telephone "></i></div>
+                                <div class="ps-block__right">
+                                    <span>{{ __('Infoline') }}</span>
+                                    <a href="tel:+216 29 300 181">29 300 181</a>
+                                </div>
+                            </div>
                             {{-- <a class="header__extra btn-compare" href="{{ route('public.compare') }}"><i class="icon-chart-bars"></i><span><i>{{ Cart::instance('compare')->count() }}</i></span></a> --}}
-                            <a class="header__extra btn-wishlist" href="{{ route('public.wishlist') }}"><i
-                                    class="icon-heart"></i><span><i>{{ !auth('customer')->check()? Cart::instance('wishlist')->count(): auth('customer')->user()->wishlist()->count() }}</i></span></a>
+                            {{-- <a class="header__extra btn-wishlist" href="{{ route('public.wishlist') }}"><i
+                                    class="icon-heart"></i><span><i>{{ !auth('customer')->check()? Cart::instance('wishlist')->count(): auth('customer')->user()->wishlist()->count() }}</i></span></a> --}}
                             @if (EcommerceHelper::isCartEnabled())
                                 <div class="ps-cart--mini">
                                     <a class="header__extra btn-shopping-cart" href="{{ route('public.cart') }}"><i
