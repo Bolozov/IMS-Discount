@@ -537,7 +537,9 @@ class MartfuryController extends PublicController
 
         $data = [];
         foreach ($products as $product) {
-            $data[] = Theme::partial('product-item', compact('product'));
+            if ($product->stock_status == "in_stock") {
+                $data[] = Theme::partial('product-item', compact('product'));
+            }
         }
 
         return $response->setData($data);
