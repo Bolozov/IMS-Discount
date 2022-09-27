@@ -222,9 +222,19 @@ Theme::set('headerMobile', Theme::partial('header-mobile-product'));
                                 <a class="linkedin"
                                     href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode($product->url) }}&summary={{ rawurldecode(strip_tags($product->description)) }}"
                                     target="_blank"><i class="fa fa-linkedin"></i></a>
-                                <a class="twitter"
+                                {{-- <a class="twitter"
                                     href="https://twitter.com/intent/tweet?url={{ urlencode($product->url) }}&text={{ strip_tags($product->description) }}"
-                                    target="_blank"><i class="fa fa-twitter"></i></a>
+                                    target="_blank"><i class="fa fa-twitter"></i></a> --}}
+                                <a class="whatsapp" href="https://wa.me/?text={{ urlencode($product->url) }}"
+                                    target="_blank"><i class="fa fa-whatsapp"></i></a>
+
+                                <a class="email-shate"
+                                    href="https://mail.google.com/mail/u/0/?view=cm&to&su=IMS%20Discount&body={{ urlencode($product->url) }}&bcc&cc&fs=1&tf=1"
+                                    target="_blank"><i class="fa fa-envelope"></i>
+                                </a>
+
+
+
                             </div>
                         </div>
                     </div>
