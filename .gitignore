@@ -23,7 +23,7 @@ __MACOSX
 /.phpintel
 /.php_cs.cache
 
-public/vendor/core
+# public/vendor/core
 public/storage/*
 
 _ide_helper.php
