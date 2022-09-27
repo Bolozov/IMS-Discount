@@ -3,9 +3,9 @@
             <div class="ps-section__header">
                 <a :href="all"><h3>{{ category.name }}</h3></a>
                 <ul class="ps-section__links">
-                    <li v-for="item in productCategories" :key="item.id">
+                    <!-- <li v-for="item in productCategories" :key="item.id">
                         <a :class="productCategory.id === item.id ? 'active': ''" :id="item.slug + '-tab'" data-toggle="tab" :href="'#' + item.slug" role="tab" :aria-controls="item.slug" aria-selected="true" @click="getData(item)">{{ item.name }}</a>
-                    </li>
+                    </li> -->
                     <li><a :href="all">{{ __('View All') }}</a></li>
                 </ul>
             </div>
@@ -39,74 +39,73 @@
 </template>
 
 <script>
-    export default {
-        data: function() {
-            return {
-                isLoading: true,
-                data: [],
-                productCategory: {},
-                productCategories: []
-            };
-        },
+export default {
+    data: function () {
+        return {
+            isLoading: true,
+            data: [],
+            productCategory: {},
+            productCategories: []
+        };
+    },
 
-        mounted() {
-            if (this.category) {
-                this.productCategory = this.category;
-                this.productCategories = this.children;
-                this.getData(this.productCategory);
-            } else {
-                this.isLoading = false;
+    mounted() {
+        if (this.category) {
+            this.productCategory = this.category;
+            this.productCategories = this.children;
+            this.getData(this.productCategory);
+        } else {
+            this.isLoading = false;
+        }
+    },
+
+    props: {
+        category: {
+            type: Object,
+            default: () => { },
+            required: true
+        },
+        children: {
+            type: Array,
+            default: () => [],
+        },
+        url: {
+            type: String,
+            default: () => null,
+            required: true
+        },
+        all: {
+            type: String,
+            default: () => null,
+            required: true
+        },
+        limit: {
+            type: String,
+            default: () => 0,
+        },
+    },
+
+    methods: {
+        getData(category) {
+            this.productCategory = category;
+            this.data = [];
+            this.isLoading = true;
+
+            let url = this.url + '?category_id=' + category.id;
+
+            if (this.limit) {
+                url += '&limit=' + this.limit;
             }
+
+            axios.get(url)
+                .then(res => {
+                    this.data = res.data.data ? res.data.data : [];
+                    this.isLoading = false;
+                })
+                .catch(res => {
+                    this.isLoading = false;
+                });
         },
-
-        props: {
-            category: {
-                type: Object,
-                default: () => {},
-                required: true
-            },
-            children: {
-                type: Array,
-                default: () => [],
-            },
-            url: {
-                type: String,
-                default: () => null,
-                required: true
-            },
-            all: {
-                type: String,
-                default: () => null,
-                required: true
-            },
-            limit: {
-                type: String,
-                default: () => 0,
-            },
-        },
-
-        methods: {
-            getData(category) {
-                this.productCategory = category;
-                this.data = [];
-                this.isLoading = true;
-
-                let url = this.url + '?category_id=' + category.id;
-
-                if (this.limit) {
-                    url += '&limit=' + this.limit;
-                }
-
-                axios.get(url)
-                    .then(res => {
-                        this.data = res.data.data ? res.data.data : [];
-                        this.isLoading = false;
-                    })
-                    .catch(res => {
-                        this.isLoading = false;
-                        console.log(res);
-                    });
-            },
-        },
-    }
+    },
+}
 </script>
