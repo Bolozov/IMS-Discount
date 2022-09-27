@@ -626,11 +626,11 @@ body {
 .ps-list--social li a.instagram i {
   color: #c32aa3;
 }
-.ps-product--detail .ps-product__sharing a.whatsapp{
-  color: #25d366;
+ a.whatsapp {
+  background: #25d366;
 }
-.ps-product--detail .ps-product__sharing a.email-share {
-  color: #3f3d3d;
+ a.email-share {
+  background: #3f3d3d;
 }
 
 .ps-list--pricing li {
