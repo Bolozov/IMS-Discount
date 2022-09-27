@@ -243,8 +243,8 @@
 
     <div class="navigation--list">
         <div class="navigation__content">
-            <a class="navigation__item " href="#" onclick="window.location('{{ route('public.index') }}')"><i
-                    class="icon-home"></i><span>
+            <a class="navigation__item " href="{{ route('public.index') }}"
+                onclick="window.location('{{ route('public.index') }}')"><i class="icon-home"></i><span>
                     {{ __('Accueil') }}</span></a>
             <a class="navigation__item ps-toggle--sidebar" href="#navigation-mobile"><i class="icon-list4"></i><span>
                     {{ __('Categories') }}</span></a>
