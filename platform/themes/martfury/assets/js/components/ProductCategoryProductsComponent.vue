@@ -1,7 +1,7 @@
 <template>
         <div class="ps-container">
             <div class="ps-section__header">
-                <h3>{{ category.name }}</h3>
+                <a :href="all"><h3>{{ category.name }}</h3></a>
                 <ul class="ps-section__links">
                     <li v-for="item in productCategories" :key="item.id">
                         <a :class="productCategory.id === item.id ? 'active': ''" :id="item.slug + '-tab'" data-toggle="tab" :href="'#' + item.slug" role="tab" :aria-controls="item.slug" aria-selected="true" @click="getData(item)">{{ item.name }}</a>
