@@ -187,7 +187,8 @@ Theme::set('headerMobile', Theme::partial('header-mobile-product'));
 
                                 <p @if (!$product->sku) style="display: none" @endif>
                                     <strong>{{ __('SKU') }}:</strong> <span
-                                        id="product-sku">{{ $product->sku }}</span></p>
+                                        id="product-sku">{{ $product->sku }}</span>
+                                </p>
                                 @if ($product->categories->count())
                                     <p class="categories"><strong> {{ __('Categories') }}:</strong>
                                         @foreach ($product->categories as $category)
@@ -484,12 +485,16 @@ Theme::set('headerMobile', Theme::partial('header-mobile-product'));
             </div>
             <div class="ps-page__right">
                 <aside class="widget widget_product widget_features">
-                    @for ($i = 1; $i <= 5; $i++)
-                        @if (theme_option('product_feature_' . $i . '_title'))
-                            <p><i class="{{ theme_option('product_feature_' . $i . '_icon') }}"></i>
-                                {{ theme_option('product_feature_' . $i . '_title') }}</p>
-                        @endif
-                    @endfor
+                    <p><i class="icon-phone-bubble"></i>
+                        Support Client
+                    </p>
+                    <p><i class="icon-thumbs-up"></i>
+                        Satisfaction Client</p>
+                    <p><i class="icon-box"></i>
+                        Retrait Magasin</p>
+                    <p><i class="icon-truck"></i>
+                        Livraison</p>
+
                 </aside>
                 @if (is_plugin_active('ads'))
                     <aside class="widget">
