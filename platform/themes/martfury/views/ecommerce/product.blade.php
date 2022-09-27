@@ -40,6 +40,10 @@ Theme::set('headerMobile', Theme::partial('header-mobile-product'));
                         <div class="ps-product__info">
                             <h1>{{ $product->name }}</h1>
                             <div class="ps-product__meta">
+                                <p @if (!$product->sku) style="display: none" @endif>
+                                    {{ __('SKU') }} : {{ $product->sku }}
+                                </p>
+
                                 @if ($product->brand_id)
                                     <p>{{ __('Brand') }}: <a
                                             href="{{ $product->brand->url }}">{{ $product->brand->name }}</a></p>
@@ -185,10 +189,10 @@ Theme::set('headerMobile', Theme::partial('header-mobile-product'));
                             </form>
                             <div class="ps-product__specification">
 
-                                <p @if (!$product->sku) style="display: none" @endif>
+                                {{-- <p @if (!$product->sku) style="display: none" @endif>
                                     <strong>{{ __('SKU') }}:</strong> <span
                                         id="product-sku">{{ $product->sku }}</span>
-                                </p>
+                                </p> --}}
                                 @if ($product->categories->count())
                                     <p class="categories"><strong> {{ __('Categories') }}:</strong>
                                         @foreach ($product->categories as $category)
