@@ -35,7 +35,7 @@
          <div class="ps-footer__copyright text-center" style="display: block !important">
              <p>
                  © {{ \Carbon\Carbon::now()->year }} IMS DISCOUNT. Proudly Crafted with ❤️ by <a
-                     href="https://end2end.tn/" target="__blank">
+                     style="margin-left: 0px; vertical-align: top;" href="https://end2end.tn/" target="__blank">
                      END 2 END DIGITAL
                  </a>
              </p>
