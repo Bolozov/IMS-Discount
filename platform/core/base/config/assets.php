@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Date: 22/07/2015
  * Time: 8:11 PM
@@ -7,7 +8,7 @@
 return [
     'offline'        => env('ASSETS_OFFLINE', true),
     'enable_version' => env('ASSETS_ENABLE_VERSION', true),
-    'version'        => env('ASSETS_VERSION', get_cms_version()),
+    'version'        => env('0.0.1', get_cms_version()),
     'scripts'        => [
         'respond',
         'excanvas',
