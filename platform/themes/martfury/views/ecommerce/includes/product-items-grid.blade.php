@@ -11,7 +11,7 @@
 <div class="ps-shopping-product">
     <div class="row">
         @forelse ($products as $product)
-            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-6">
+            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-4">
                 <div class="ps-product">
                     {!! Theme::partial('product-item', compact('product')) !!}
                 </div>
