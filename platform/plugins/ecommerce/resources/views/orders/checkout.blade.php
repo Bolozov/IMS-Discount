@@ -159,7 +159,7 @@
                                             </ul>
                                         </div>
                                     @else
-                                        <p>{{ __('No shipping methods available!') }}</p>
+                                        <p>{{ __('Aucune méthode d\'expédition disponible!') }}</p>
                                     @endif
                                 </div>
                                 <br>
