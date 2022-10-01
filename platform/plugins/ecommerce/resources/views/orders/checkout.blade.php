@@ -8,7 +8,11 @@
         <link rel="stylesheet" href="{{ asset('vendor/core/plugins/payment/css/payment.css') }}?v=1.0.5">
         <script src="{{ asset('vendor/core/plugins/payment/js/payment.js') }}?v=1.0.5"></script>
 
-        {!! Form::open(['route' => ['public.checkout.process', $token], 'class' => 'checkout-form payment-checkout-form', 'id' => 'checkout-form']) !!}
+        {!! Form::open([
+            'route' => ['public.checkout.process', $token],
+            'class' => 'checkout-form payment-checkout-form',
+            'id' => 'checkout-form',
+        ]) !!}
         <input type="hidden" name="checkout-token" id="checkout-token" value="{{ $token }}">
 
         <div class="container" id="main-checkout-product-info">
@@ -34,7 +38,8 @@
                                     <p>{{ __('Subtotal') }}:</p>
                                 </div>
                                 <div class="col-6">
-                                    <p class="price-text sub-total-text text-end"> {{ format_price(Cart::instance('cart')->rawSubTotal()) }} </p>
+                                    <p class="price-text sub-total-text text-end">
+                                        {{ format_price(Cart::instance('cart')->rawSubTotal()) }} </p>
                                 </div>
                             </div>
                             @if (session('applied_coupon_code'))
@@ -53,7 +58,8 @@
                                         <p>{{ __('Coupon code discount amount') }}:</p>
                                     </div>
                                     <div class="col-6">
-                                        <p class="price-text total-discount-amount-text"> {{ format_price($couponDiscountAmount) }} </p>
+                                        <p class="price-text total-discount-amount-text">
+                                            {{ format_price($couponDiscountAmount) }} </p>
                                     </div>
                                 </div>
                             @endif
@@ -78,7 +84,7 @@
                                 </div>
                             @endif
 
-                            @if (EcommerceHelper::isTaxEnabled())
+                            {{-- @if (EcommerceHelper::isTaxEnabled())
                                 <div class="row">
                                     <div class="col-6">
                                         <p>{{ __('Tax') }}:</p>
@@ -87,7 +93,7 @@
                                         <p class="price-text tax-price-text">{{ format_price(Cart::instance('cart')->rawTax()) }}</p>
                                     </div>
                                 </div>
-                            @endif
+                            @endif --}}
 
                             <div class="row">
                                 <div class="col-6">
@@ -95,7 +101,9 @@
                                 </div>
                                 <div class="col-6 float-end">
                                     <p class="total-text raw-total-text"
-                                       data-price="{{ format_price(Cart::instance('cart')->rawTotal(), null, true) }}"> {{ ($promotionDiscountAmount + $couponDiscountAmount - $shippingAmount) > Cart::instance('cart')->rawTotal() ? format_price(0) : format_price(Cart::instance('cart')->rawTotal() - $promotionDiscountAmount - $couponDiscountAmount + $shippingAmount) }} </p>
+                                        data-price="{{ format_price(Cart::instance('cart')->rawTotal(), null, true) }}">
+                                        {{ $promotionDiscountAmount + $couponDiscountAmount - $shippingAmount > Cart::instance('cart')->rawTotal() ? format_price(0) : format_price(Cart::instance('cart')->rawTotal() - $promotionDiscountAmount - $couponDiscountAmount + $shippingAmount) }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -117,8 +125,10 @@
 
                             <div>
                                 <h5 class="checkout-payment-title">{{ __('Shipping information') }}</h5>
-                                <input type="hidden" value="{{ route('public.checkout.save-information', $token) }}" id="save-shipping-information-url">
-                                @include('plugins/ecommerce::orders.partials.address-form', compact('sessionCheckoutData'))
+                                <input type="hidden" value="{{ route('public.checkout.save-information', $token) }}"
+                                    id="save-shipping-information-url">
+                                @include('plugins/ecommerce::orders.partials.address-form',
+                                    compact('sessionCheckoutData'))
                             </div>
                             <br>
 
@@ -132,16 +142,18 @@
                                     </div>
                                     @if (!empty($shipping))
                                         <div class="payment-checkout-form">
-                                            <input type="hidden" name="shipping_option" value="{{ old('shipping_option', $defaultShippingOption) }}">
+                                            <input type="hidden" name="shipping_option"
+                                                value="{{ old('shipping_option', $defaultShippingOption) }}">
                                             <ul class="list-group list_payment_method">
                                                 @foreach ($shipping as $shippingKey => $shippingItem)
-                                                    @foreach($shippingItem as $subShippingKey => $subShippingItem)
-                                                        @include('plugins/ecommerce::orders.partials.shipping-option', [
-                                                            'defaultShippingMethod' => $defaultShippingMethod,
-                                                            'defaultShippingOption' => $defaultShippingOption,
-                                                            'shippingOption'        => $subShippingKey,
-                                                            'shippingItem'          => $subShippingItem,
-                                                        ])
+                                                    @foreach ($shippingItem as $subShippingKey => $subShippingItem)
+                                                        @include('plugins/ecommerce::orders.partials.shipping-option',
+                                                            [
+                                                                'defaultShippingMethod' => $defaultShippingMethod,
+                                                                'defaultShippingOption' => $defaultShippingOption,
+                                                                'shippingOption' => $subShippingKey,
+                                                                'shippingItem' => $subShippingItem,
+                                                            ])
                                                     @endforeach
                                                 @endforeach
                                             </ul>
@@ -160,22 +172,41 @@
                                     </div>
                                 </div>
                                 <h5 class="checkout-payment-title">{{ __('Payment method') }}</h5>
-                                <input type="hidden" name="amount" value="{{ ($promotionDiscountAmount + $couponDiscountAmount - $shippingAmount) > Cart::instance('cart')->rawTotal() ? 0 : format_price(Cart::instance('cart')->rawTotal() - $promotionDiscountAmount - $couponDiscountAmount + $shippingAmount, null, true) }}">
-                                <input type="hidden" name="currency" value="{{ strtoupper(get_application_currency()->title) }}">
-                                <input type="hidden" name="callback_url" value="{{ route('public.payment.paypal.status') }}">
-                                <input type="hidden" name="return_url" value="{{ \Botble\Payment\Supports\PaymentHelper::getRedirectURL($token) }}">
+                                <input type="hidden" name="amount"
+                                    value="{{ $promotionDiscountAmount + $couponDiscountAmount - $shippingAmount > Cart::instance('cart')->rawTotal() ? 0 : format_price(Cart::instance('cart')->rawTotal() - $promotionDiscountAmount - $couponDiscountAmount + $shippingAmount, null, true) }}">
+                                <input type="hidden" name="currency"
+                                    value="{{ strtoupper(get_application_currency()->title) }}">
+                                <input type="hidden" name="callback_url"
+                                    value="{{ route('public.payment.paypal.status') }}">
+                                <input type="hidden" name="return_url"
+                                    value="{{ \Botble\Payment\Supports\PaymentHelper::getRedirectURL($token) }}">
                                 {!! apply_filters(PAYMENT_FILTER_PAYMENT_PARAMETERS, null) !!}
                                 <ul class="list-group list_payment_method">
 
-                                    {!! apply_filters(PAYMENT_FILTER_ADDITIONAL_PAYMENT_METHODS, null, ['amount' => ($promotionDiscountAmount + $couponDiscountAmount - $shippingAmount) > Cart::instance('cart')->rawTotal() ? 0 : format_price(Cart::instance('cart')->rawTotal() - $promotionDiscountAmount - $couponDiscountAmount + $shippingAmount, null, true), 'currency' => strtoupper(get_application_currency()->title), 'name' => null]) !!}
+                                    {!! apply_filters(PAYMENT_FILTER_ADDITIONAL_PAYMENT_METHODS, null, [
+                                        'amount' =>
+                                            $promotionDiscountAmount + $couponDiscountAmount - $shippingAmount > Cart::instance('cart')->rawTotal()
+                                                ? 0
+                                                : format_price(
+                                                    Cart::instance('cart')->rawTotal() - $promotionDiscountAmount - $couponDiscountAmount + $shippingAmount,
+                                                    null,
+                                                    true,
+                                                ),
+                                        'currency' => strtoupper(get_application_currency()->title),
+                                        'name' => null,
+                                    ]) !!}
 
                                     @if (setting('payment_cod_status') == 1)
                                         <li class="list-group-item">
-                                            <input class="magic-radio js_payment_method" type="radio" name="payment_method" id="payment_cod"
-                                                   @if (setting('default_payment_method') == \Botble\Payment\Enums\PaymentMethodEnum::COD) checked @endif
-                                                   value="cod" data-bs-toggle="collapse" data-bs-target=".payment_cod_wrap" data-parent=".list_payment_method">
-                                            <label for="payment_cod" class="text-start">{{ setting('payment_cod_name', trans('plugins/payment::payment.payment_via_cod')) }}</label>
-                                            <div class="payment_cod_wrap payment_collapse_wrap collapse @if (setting('default_payment_method') == \Botble\Payment\Enums\PaymentMethodEnum::COD) show @endif" style="padding: 15px 0;">
+                                            <input class="magic-radio js_payment_method" type="radio"
+                                                name="payment_method" id="payment_cod"
+                                                @if (setting('default_payment_method') == \Botble\Payment\Enums\PaymentMethodEnum::COD) checked @endif value="cod"
+                                                data-bs-toggle="collapse" data-bs-target=".payment_cod_wrap"
+                                                data-parent=".list_payment_method">
+                                            <label for="payment_cod"
+                                                class="text-start">{{ setting('payment_cod_name', trans('plugins/payment::payment.payment_via_cod')) }}</label>
+                                            <div class="payment_cod_wrap payment_collapse_wrap collapse @if (setting('default_payment_method') == \Botble\Payment\Enums\PaymentMethodEnum::COD) show @endif"
+                                                style="padding: 15px 0;">
                                                 {!! clean(setting('payment_cod_description')) !!}
 
                                                 @php $minimumOrderAmount = setting('payment_cod_minimum_amount', 0); @endphp
@@ -190,11 +221,15 @@
 
                                     @if (setting('payment_bank_transfer_status') == 1)
                                         <li class="list-group-item">
-                                            <input class="magic-radio js_payment_method" type="radio" name="payment_method" id="payment_bank_transfer"
-                                                   @if (setting('default_payment_method') == \Botble\Payment\Enums\PaymentMethodEnum::BANK_TRANSFER) checked @endif
-                                                   value="bank_transfer" data-bs-toggle="collapse" data-bs-target=".payment_bank_transfer_wrap" data-parent=".list_payment_method">
-                                            <label for="payment_bank_transfer" class="text-start">{{ setting('payment_bank_transfer_name', trans('plugins/payment::payment.payment_via_bank_transfer')) }}</label>
-                                            <div class="payment_bank_transfer_wrap payment_collapse_wrap collapse @if (setting('default_payment_method') == \Botble\Payment\Enums\PaymentMethodEnum::BANK_TRANSFER) show @endif" style="padding: 15px 0;">
+                                            <input class="magic-radio js_payment_method" type="radio"
+                                                name="payment_method" id="payment_bank_transfer"
+                                                @if (setting('default_payment_method') == \Botble\Payment\Enums\PaymentMethodEnum::BANK_TRANSFER) checked @endif value="bank_transfer"
+                                                data-bs-toggle="collapse" data-bs-target=".payment_bank_transfer_wrap"
+                                                data-parent=".list_payment_method">
+                                            <label for="payment_bank_transfer"
+                                                class="text-start">{{ setting('payment_bank_transfer_name', trans('plugins/payment::payment.payment_via_bank_transfer')) }}</label>
+                                            <div class="payment_bank_transfer_wrap payment_collapse_wrap collapse @if (setting('default_payment_method') == \Botble\Payment\Enums\PaymentMethodEnum::BANK_TRANSFER) show @endif"
+                                                style="padding: 15px 0;">
                                                 {!! clean(setting('payment_bank_transfer_description')) !!}
                                             </div>
                                         </li>
@@ -207,7 +242,8 @@
                             <div class="form-group mb-3 @if ($errors->has('description')) has-error @endif">
                                 <label for="description" class="control-label">{{ __('Order notes') }}</label>
                                 <br>
-                                <textarea name="description" id="description" rows="3" class="form-control" placeholder="{{ __('Notes about your order, e.g. special notes for delivery.') }}">{{ old('description') }}</textarea>
+                                <textarea name="description" id="description" rows="3" class="form-control"
+                                    placeholder="{{ __('Notes about your order, e.g. special notes for delivery.') }}">{{ old('description') }}</textarea>
                                 {!! Form::error('description', $errors) !!}
                             </div>
 
@@ -220,16 +256,23 @@
                             <div class="form-group mb-3">
                                 <div class="row">
                                     <div class="col-md-6 d-none d-md-block" style="line-height: 53px">
-                                        <a class="text-info" href="{{ route('public.cart') }}"><i class="fas fa-long-arrow-alt-left"></i> <span class="d-inline-block back-to-cart">{{ __('Back to cart') }}</span></a>
+                                        <a class="text-info" href="{{ route('public.cart') }}"><i
+                                                class="fas fa-long-arrow-alt-left"></i> <span
+                                                class="d-inline-block back-to-cart">{{ __('Back to cart') }}</span></a>
                                     </div>
                                     <div class="col-md-6 checkout-button-group">
-                                        <button type="submit" @if (EcommerceHelper::getMinimumOrderAmount() > Cart::instance('cart')->rawSubTotal()) disabled @endif class="btn payment-checkout-btn payment-checkout-btn-step float-end" data-processing-text="{{ __('Processing. Please wait...') }}" data-error-header="{{ __('Error') }}">
+                                        <button type="submit" @if (EcommerceHelper::getMinimumOrderAmount() > Cart::instance('cart')->rawSubTotal()) disabled @endif
+                                            class="btn payment-checkout-btn payment-checkout-btn-step float-end"
+                                            data-processing-text="{{ __('Processing. Please wait...') }}"
+                                            data-error-header="{{ __('Error') }}">
                                             {{ __('Checkout') }}
                                         </button>
                                     </div>
                                 </div>
                                 <div class="d-block d-md-none back-to-cart-button-group">
-                                    <a class="text-info" href="{{ route('public.cart') }}"><i class="fas fa-long-arrow-alt-left"></i> <span class="d-inline-block">{{ __('Back to cart') }}</span></a>
+                                    <a class="text-info" href="{{ route('public.cart') }}"><i
+                                            class="fas fa-long-arrow-alt-left"></i> <span
+                                            class="d-inline-block">{{ __('Back to cart') }}</span></a>
                                 </div>
                             </div>
                         </form>
