@@ -133,7 +133,7 @@
                             <br>
 
                             @if (!is_plugin_active('marketplace'))
-                                {{-- <div id="shipping-method-wrapper">
+                                <div id="shipping-method-wrapper">
                                     <h5 class="checkout-payment-title">{{ __('Shipping method') }}</h5>
                                     <div class="shipping-info-loading" style="display: none;">
                                         <div class="shipping-info-loading-content">
@@ -161,7 +161,7 @@
                                     @else
                                         <p>{{ __('Aucune méthode d\'expédition disponible!') }}</p>
                                     @endif
-                                </div> --}}
+                                </div>
                                 <br>
                             @endif
 
