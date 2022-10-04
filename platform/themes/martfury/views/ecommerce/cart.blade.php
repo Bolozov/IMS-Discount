@@ -143,7 +143,7 @@
                                 <h3>{{ __('Total') }}
                                     <span>{{ $promotionDiscountAmount + $couponDiscountAmount > Cart::instance('cart')->rawTotal() ? format_price(0) : format_price(Cart::instance('cart')->rawTotal() - $promotionDiscountAmount - $couponDiscountAmount) }}</span>
                                 </h3>
-                                <p><small>({{ __('Shipping fees not included') }})</small></p>
+                                {{-- <p><small>({{ __('Shipping fees not included') }})</small></p> --}}
                             </div>
                         </div>
                         <a class="ps-btn btn-cart-button-action" href="{{ route('public.products') }}"><i
