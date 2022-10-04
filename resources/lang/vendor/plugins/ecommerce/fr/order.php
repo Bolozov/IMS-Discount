@@ -40,7 +40,7 @@ return [
     'address_phone_required' => 'The phone field is required.',
     'address_email_required' => 'The email field is required.',
     'address_email_unique' => 'The customer with that email is existed, please choose other email or login with this email!',
-    'address_state_required' => 'The state field is required.',
+    'address_state_required' => 'Le champ d\'état est requis.',
     'address_city_required' => 'The city field is required.',
     'address_country_required' => 'The country field is required.',
     'address_address_required' => 'The address field is required.',
